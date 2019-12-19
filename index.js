@@ -1,4 +1,4 @@
-let telegram_url = "https://api.telegram.org/bot" + process.env.TELEGRAM_API_TOKEN + "/sendMessage";
+let telegram_url = "no" + process.env.TELEGRAM_API_TOKEN + "/sendMessage";
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -10,6 +10,9 @@ app.use(
         extended: true
     })
 );
+app.get("/",(req,res) => {
+    res.render('index_windows')
+})
 app.post("/start_bot", function (req, res) {
     const {message} = req.body;
     let reply = "Welcome to telegram ETA bot";
